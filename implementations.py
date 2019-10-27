@@ -34,7 +34,7 @@ def least_squares(y, tx):
         (w, loss) the last weight vector of the calculation, and the corresponding loss value (cost function).
 
     """
-#Calculate the weight through the normal equation solution
+    #Calculate the weight through the normal equation solution
     gram_matrix=tx.T@tx
     w= np.linalg.solve(gram_matrix, tx.T@y)
     loss=mse(y,tx,w)
@@ -63,12 +63,6 @@ def ridge_regression(y, tx, lambda_):
     loss=mse(y,tx,w)
     return w,loss
 
-#     aI = 2 * tx.shape[0] * lambda_ * np.identity(tx.shape[1])
-#     a = tx.T.dot(tx) + aI
-#     b = tx.T.dot(y)
-#     w= np.linalg.solve(a, b)
-#     loss=mse(y,tx,w)
-#     return w,loss
 
 
     """
@@ -116,7 +110,6 @@ def gradient_descent(y, tx, initial_w, max_iters, gamma):
         gradient=compute_gradient(y, tx, w)
         w=w-gamma*gradient
         loss=mse(y, tx, w)
-        # print("Gradient Descent({bi}/{ti}): loss={l}, w={w1}".format(bi=n_iter, ti=max_iters - 1, l=loss, w1=w))
     return w,loss
 
 
@@ -126,11 +119,7 @@ def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
     Takes as input two iterables (here the output desired values 'y' and the input data 'tx')
     Outputs an iterator which gives mini-batches of `batch_size` matching elements from `y` and `tx`.
     Data can be randomly shuffled to avoid ordering in the original data messing with the randomness of the minibatches.
-    Example of use :
-    for minibatch_y, minibatch_tx in batch_iter(y, tx, 32):
-        <DO-SOMETHING>
-        
-        Parameters
+
     ----------
     y : np.array
         Array of labels (N,)
@@ -239,8 +228,6 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
         pred = sigmoid(tx.dot(w))
         loss = y.T.dot(np.log(pred)) + (1 - y).T.dot(np.log(1 - pred))
         loss = np.squeeze(- loss)
-        # loss= (np.log(1+np.exp(tx @ w)).sum()- y.T @ tx @ w).squeeze()
-        # gradient= tx.T @ (sigmoid(tx @ w) - y)
         pred = sigmoid(tx.dot(w))
         gradient  = tx.T.dot(pred - y)
         w= w - gamma*gradient
@@ -278,16 +265,10 @@ def reg_logistic_regression(y, tx, lambda_ ,initial_w, max_iters, gamma):
     # start the logistic regression
     for iter in range(max_iters):
         # get loss and update w.
-        # loss= (np.log(1+np.exp(tx @ w)).sum()- y.T @ tx @ w).squeeze() + lambda_/2 * np.linalg.norm(w)
-        # gradient= tx.T @ (sigmoid(tx @ w) - y) + 2* lambda_*w
+
         loss = calculate_loss(y, tx, w) + lambda_ * np.squeeze(w.T.dot(w))
         gradient = calculate_gradient(y, tx, w) + 2 * lambda_ * w
         w= w - gamma*gradient
-
-        # log info
-        #if iter % 100 == 0:
-            #print("Current iteration={i}, loss={l}".format(i=iter, l=loss))
-        # converge criterion
         losses.append(loss)
         if len(losses) > 1 and np.abs(losses[-1] - losses[-2]) < threshold:
             break
