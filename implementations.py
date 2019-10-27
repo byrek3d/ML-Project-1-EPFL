@@ -255,6 +255,28 @@ def calculate_gradient(y, tx, w):
     return grad
 
 
+    """
+    Regularized logistic regression using gradient descent
+
+    Parameters
+    ----------
+    y : np.array
+        Array of labels (N,)
+    tx : np.array
+        Array of the features  (N,D)
+    lambda_ : np.float64
+        Regularization parameter
+    initial_w : np.array
+        Initial random weights of the model (D,)
+    max_iters: int
+        The maximum number of iterations
+    gamma: float
+        The step size
+
+    Returns:
+        (w, loss) the last weight vector of the calculation, and the corresponding loss value (cost function).
+
+    """
 def reg_logistic_regression(y, tx, lambda_ ,initial_w, max_iters, gamma):
         # init parameters
     threshold = 1e-8
