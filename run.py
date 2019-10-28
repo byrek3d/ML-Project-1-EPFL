@@ -307,7 +307,7 @@ def cross_validation(y, x, k_indices,k, degree,index_to_be_skewed):
 
 def cross_validation_demo(y, x,min_,max_,index_to_be_skewed):
     seed = 1
-    k_fold = 5
+    k_fold = 10
     degrees = np.arange(min_,max_)
     # split data in k fold
     k_indices = build_k_indices(y, k_fold, seed)
@@ -342,7 +342,7 @@ def cross_validation_demo(y, x,min_,max_,index_to_be_skewed):
 print("Starting cross validation for the tx0 dataset")
 print("##################################")
 
-min_degree0,min_loss0=cross_validation_demo(y[tX0_dropped_distribution[:,0].astype(int)], tX0_dropped_distribution[:,1:],1,15,index_to_be_skewed0)
+min_degree0,min_loss0=cross_validation_demo(y[tX0_dropped_distribution[:,0].astype(int)], tX0_dropped_distribution[:,1:],1,16,index_to_be_skewed0)
 
 # # Record the min, max, mean, std of the data set resulting from the best weight found so they can be re-applied to the testing set later
 min0= np.min(tX0_dropped_distribution[:,1:],axis=0)
