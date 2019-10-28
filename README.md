@@ -28,7 +28,7 @@ We found it more useful to calculate the accuracy of the predictions, instead of
 ```python
 def  build_poly(x, degree)
 ```
-We use this function for expanding our features to a higher dimension. Instead of doing a simple polynomial expansion (as done in the homeworks) we decided to.... (I don't know how to explain this)
+We use this function for expanding our features to a higher dimension. For a detailed explanation on how it works and why we decided on doing the expansion this way, see the report
 
 
 
