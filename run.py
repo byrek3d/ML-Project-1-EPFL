@@ -414,7 +414,7 @@ print("##################################")
 
 
 
-print("I porting train.csv and applying transformations to the data")
+print("Importing train.csv and applying transformations to the data")
 print("##################################")
 
 DATA_TEST_PATH = '../data/test.csv' 
