@@ -3,7 +3,8 @@
 The goal of the project is to explore and compare different supervised learning algorithms and how they deal with a data-set from  CERN in the field of physics, in order to best predict the presence of the Higgs Boson.
 ## How to run the solution 
 
-"python run.py" 
+Run the command: "python run.py" 
+
 The train and test csv files should be located in a folder named "data" one directory above the location of the run.py file. The predictions will be saved in a file named 'result_LS.csv'
 ## Code Organization
 
