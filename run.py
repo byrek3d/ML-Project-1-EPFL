@@ -429,7 +429,7 @@ y0indices=[]
 y1indices=[]
 y2indices=[]
 
-# # Partition the train set into 3 data sets while saving the indeces in separate arrays
+# # Partition the train set into 3 data sets while saving the indices in separate arrays
 for index, jet_num in enumerate(tX_test[:,22]):   
     if(int(jet_num)==0):
         x0.append(tX_test[index])
